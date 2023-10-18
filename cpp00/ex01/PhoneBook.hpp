@@ -2,18 +2,21 @@
 #define CLASSPHONEBOOK_HPP
 #include <iostream>
 #include <string>
-# include <sstream>
-#include<stdlib.h>
-#include "ClassContact.hpp"
+#include <cstdlib> 
+#include "Contact.hpp"
+#include <sstream>
 
 class PhoneBook {
     private :
         Contact contacts[8];
     public:
         PhoneBook();
-        void ADD (Contact contact, int index);
+        void ADD (Contact contact, int count);
         void SEARCH(int index);
         void DispalyAll();
+        void displayContact(Contact contact, int i);
+        void disp_ten(std::string str, int i);
+        void display_allfields(Contact contact);
 };
 
 #endif 
