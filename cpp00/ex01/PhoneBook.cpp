@@ -2,7 +2,7 @@
 void PhoneBook::disp_ten(std::string str, int i)
 {
     int j = 0;
-    while (str[j] && j < 10)
+    while (str[j] && j < 9)
     {
         std::cout<<str[j];
         j++;
@@ -15,31 +15,35 @@ void PhoneBook::disp_ten(std::string str, int i)
 }
 void PhoneBook::displayContact(Contact contact, int i)
 {
-        std::cout << "Index " << contact.get_index()+ 1;
-         std::cout << "  |  ";
+        std::cout << "Index: " << contact.get_index()+ 1;
+        std::cout << std::setw(11);
+        std::cout << "  |  ";
         std::cout << "FirstName: " ;
+        std::cout << std::setw(11 - contact.get_FirstName().length());
         disp_ten(contact.get_FirstName(),0) ;
         std::cout << "  |  ";
         std::cout << "LastName: " ;
-        disp_ten(contact.get_LastName(),0) ;
+        std::cout << std::setw(11 - contact.get_LastName().length());
+        disp_ten(contact.get_LastName(),0);
         std::cout << "  |  ";
         std::cout << "DarkestSecret: ";
+        std::cout << std::setw(11 - contact.get_DarkestSecret().length());
         disp_ten(contact.get_DarkestSecret(),0);
         std::cout<<std::endl;
 }
 
 void PhoneBook::display_allfields(Contact contact)
 {
-        std::cout << "Index " << contact.get_index()+ 1<<std::endl;
-        std::cout << "FirstName: " ;
+        std::cout << "Index        : " << contact.get_index()+ 1<<std::endl;
+        std::cout << "FirstName    : " ;
         std::cout << contact.get_FirstName()<<std::endl;
-        std::cout << "LastName: " ;
+        std::cout << "LastName     : " ;
         std::cout << contact.get_LastName()<<std::endl;
         std::cout << "DarkestSecret: ";
         std::cout << contact.get_DarkestSecret()<<std::endl;
-        std::cout << "NickName: ";
+        std::cout << "NickName     : ";
         std::cout << contact.get_NickName()<<std::endl;
-        std::cout << "PhoneNumber: ";
+        std::cout << "PhoneNumber  : ";
         std::cout << contact.get_PhoneNumber()<<std::endl;
 }
 
