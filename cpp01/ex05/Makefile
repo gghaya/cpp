@@ -24,7 +24,7 @@ NAME = Harl
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) Harl.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 
 clean :

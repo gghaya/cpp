@@ -23,7 +23,7 @@ NAME = Zombie
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) Zombie.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 	@echo "done"
 clean :

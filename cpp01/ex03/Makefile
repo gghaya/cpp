@@ -24,7 +24,7 @@ NAME = Weapon
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) HumanB.hpp HumanA.hpp Weapon.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 clean :
 	@rm -rf $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:33:55 by gghaya            #+#    #+#             */
-/*   Updated: 2023/10/22 20:34:40 by gghaya           ###   ########.fr       */
+/*   Updated: 2023/10/24 22:58:05 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ Weapon::~Weapon()
 {
 }
 
-std::string Weapon::getType()
+const std::string& Weapon::getType()
 {
-    return (this->type);
+    return(this->type);
 }
 
 void Weapon::setType(std::string type)

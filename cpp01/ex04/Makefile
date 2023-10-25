@@ -20,7 +20,7 @@ CC = c++
 
 FLAG = -Wall -Wextra -Werror -std=c++98
 
-NAME = ref
+NAME = sed
 
 all : $(NAME)
 

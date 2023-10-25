@@ -6,12 +6,12 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 12:06:39 by gghaya            #+#    #+#             */
-/*   Updated: 2023/10/23 19:33:37 by gghaya           ###   ########.fr       */
+/*   Updated: 2023/10/24 22:39:11 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-//std::ios::trunc |
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -30,7 +30,7 @@ int main (int ac, char **av)
         concat = strr + ".replace";
         std::fstream MyFile;
         std::fstream CopyFile;
-        MyFile.open(av[1],   std::ios::out | std::ios::in);
+        MyFile.open(av[1], std::ios::out | std::ios::in);
         CopyFile.open(concat,  std::ios::trunc |std::ios::out | std::ios::in);
         if (MyFile.fail() || CopyFile.fail())
             std::cout << "Fail to Open file"<<std::endl;
@@ -44,6 +44,6 @@ int main (int ac, char **av)
         CopyFile << line;
         MyFile.close();
     }
-    else   
+    else
         std::cout << "Enexpected number of arguments"<<std::endl;
 }
