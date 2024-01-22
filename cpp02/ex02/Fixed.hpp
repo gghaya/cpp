@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:11:43 by gghaya            #+#    #+#             */
-/*   Updated: 2023/10/30 20:20:50 by gghaya           ###   ########.fr       */
+/*   Updated: 2023/10/31 18:09:46 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ public:
     ~Fixed();
     Fixed(const Fixed &ref);
     Fixed & operator=(Fixed const &f1);	
-    int getValue();
     int getFractional_bits();
     int getRawBits( void ) const;
     void setRawBits( int const raw );
@@ -41,12 +40,12 @@ public:
     static const Fixed & min(Fixed const & f1,Fixed const & f2);
     static const Fixed & max(Fixed const  & f1,Fixed  const & f2);
     static Fixed & max(Fixed  & f1,Fixed  & f2);
-    const bool operator>(Fixed const &f1) ;
-    const bool operator<(Fixed const &f1) ;
-    const bool operator>=(Fixed const &f1) ;
-    const bool operator<=(Fixed const &f1) ;
-    const bool operator==(Fixed const &f1) ;
-    const bool operator!=(Fixed const &f1) ;
+    bool operator>(Fixed const &f1) ;
+    bool operator<(Fixed const &f1) ;
+    bool operator>=(Fixed const &f1) ;
+    bool operator<=(Fixed const &f1) ;
+    bool operator==(Fixed const &f1) ;
+    bool operator!=(Fixed const &f1) ;
     const Fixed operator+(Fixed const &f1) ;
     const Fixed operator-(Fixed const &f1) ;
     Fixed& operator*(Fixed const &f1);

@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:00:08 by gghaya            #+#    #+#             */
-/*   Updated: 2023/10/27 17:27:16 by gghaya           ###   ########.fr       */
+/*   Updated: 2023/10/31 15:53:29 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ Fixed::Fixed()
 Fixed::~Fixed()
 {
      std::cout <<"destructor called"<<std::endl;
-}
-
-int Fixed::getValue()
-{
-     return (this->value);
 }
 
 int Fixed::getFractional_bits()

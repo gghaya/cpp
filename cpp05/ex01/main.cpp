@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 19:56:53 by gghaya            #+#    #+#             */
-/*   Updated: 2023/10/31 15:53:50 by gghaya           ###   ########.fr       */
+/*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
+/*   Updated: 2024/01/22 16:10:05 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
 
-#include <iostream>
-class Fixed
+#include "Bureaucrat.hpp"
+
+int main()
 {
-private:
-    int value;
-    static const int fractional_bits = 8;
-public:
-    Fixed();
-    ~Fixed();
-    Fixed(const Fixed &ref);
-    Fixed & operator=(Fixed const & rhs);	
-    int getFractional_bits();
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-#endif
+    Bureaucrat B = Bureaucrat("Ghizlane", 150);
+    // std::cout<<B;
+    B.decrement_grade();
+    // std::cout<<B;
+    B.increment_grade();
+    std::cout<<B;
+    return(0);
+}
