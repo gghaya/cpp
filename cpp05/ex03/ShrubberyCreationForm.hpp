@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 14:15:12 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/01 19:39:32 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/01 23:16:11 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
-int main()
-{
-    Bureaucrat *B = new Bureaucrat("Ghizlane", 13);
-    Form F = Form("F1", 0, 12,1);
-    F.beSigned(B);
-    delete (B);
-    return(0);
-}
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
+
+#include "AForm.hpp"
+
+class ShrubberyCreationForm : public AForm {
+private:
+    std::string target;
+public:
+    ShrubberyCreationForm(const std::string& target);
+    virtual ~ShrubberyCreationForm();
+    std::string get_target()const;
+    virtual void execute(const Bureaucrat &B);
+};
+
+#endif // SHRUBBERYCREATIONFORM_HPP

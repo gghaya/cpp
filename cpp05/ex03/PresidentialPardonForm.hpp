@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 14:15:12 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/01 23:01:44 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/01 23:02:12 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
-int main()
-{
-    Bureaucrat *B = new Bureaucrat("Ghizlane", 13);
-    Form F = Form("F1", 0, 12,1);
-    F.beSigned(B);
-    delete (B);
-    return(0);
-}
+#ifndef PresidentialPardonForm_HPP
+#define PresidentialPardonForm_HPP
+
+#include "AForm.hpp"
+
+class PresidentialPardonForm : public AForm {
+private:
+    std::string target;
+public:
+    PresidentialPardonForm(const std::string& target);
+    virtual ~PresidentialPardonForm();
+    std::string get_target()const;
+    virtual void execute(const Bureaucrat &B);
+};
+
+#endif // PresidentialPardonForm_HPP
