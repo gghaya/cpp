@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:12:48 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 18:41:28 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:32:35 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,17 @@ int AForm::get_gradeToExecute() const
     return this->gradeToExecute;
 }
 
-void AForm::beSigned(Bureaucrat *B)
+void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
     try
     {
-        if (B->get_grade() > this->gradeToSign)
+        if (bureaucrat.get_grade() > this->gradeToSign)
             throw GradeTooLowException();
-        // if (this->signedStatus != 1)
-        // {
-            this->signedStatus = 1;
-            // B->signAForm(this);
-        // }
-        
+        this->signedStatus = 1;
     }
     catch(const GradeTooLowException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
 }
 

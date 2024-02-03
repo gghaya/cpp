@@ -6,19 +6,25 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:53:28 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 23:00:07 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 20:45:55 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Request", 72, 45)
 {
     this->target = target;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &ref):AForm(ref), target(ref.target)
 {
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &ref)
+{
+    *this = ref;
+    return (*this);
 }
 
 std::string RobotomyRequestForm::get_target() const
@@ -43,4 +49,9 @@ void RobotomyRequestForm::execute(const Bureaucrat &B)
     catch (const GradeTooLowException& e) {
         std::cout << e.what() << std::endl;
     }
+}
+
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{
 }

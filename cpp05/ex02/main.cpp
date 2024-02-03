@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 23:40:22 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 20:49:11 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main()
         std::cout << "\n--------------- Form 1 ( Shrubbery ) ---------------" << std::endl;
         // bureaucrat.signForm(form1);
         bureaucrat.executeForm(form1);
+        form1.execute(bureaucrat);
         std::cout << "\n--------------- Form 2 ( Robotomy ) ---------------" << std::endl;
         // bureaucrat.signForm(form2);
         bureaucrat.executeForm(form2);
@@ -37,6 +38,5 @@ int main()
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-    return EXIT_SUCCESS;
     return(0);
 }

@@ -6,16 +6,12 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:12:48 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 18:41:28 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 14:01:59 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm():gradeToSign(1),gradeToExecute(1),name("Default name")
-{
-    this->signedStatus = 0;
-}
 
 AForm::AForm(const std::string &name, const int gradeToSign, const int gradeToExecute): name(name) , gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
@@ -34,6 +30,10 @@ AForm::AForm(const std::string &name, const int gradeToSign, const int gradeToEx
     }
 }
 
+AForm::AForm():gradeToSign(1),gradeToExecute(1),name("Default name")
+{
+    this->signedStatus = 0;
+}
 AForm::AForm(const AForm &ref):gradeToExecute(ref.gradeToExecute), gradeToSign(ref.gradeToSign),name(ref.name)
 {
     try{
@@ -95,7 +95,7 @@ void AForm::beSigned(Bureaucrat *B)
     }
     catch(const GradeTooLowException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
 }
 

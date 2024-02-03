@@ -13,7 +13,7 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target):AForm("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target):AForm("PresidentialPardon", 25, 5)
 {
     this->target = target;
 }
@@ -33,6 +33,28 @@ void PresidentialPardonForm::execute(const Bureaucrat &B)
 std::string PresidentialPardonForm::get_target() const
 {
     return (this->target);
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &ref):AForm(ref), target(ref.target)
+{
+    try{
+        if (this->get_gradeToExecute() < 1 || this->get_gradeToSign() < 1)
+            throw GradeTooHighException();
+        else if (ref.get_gradeToExecute() > 150 || ref.get_gradeToSign() > 150)
+            throw GradeTooLowException();
+    }
+    catch (const GradeTooHighException& e) {
+        std::cout << e.what() << std::endl;
+    } 
+    catch (const GradeTooLowException& e) {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &ref)
+{
+    *this = ref;
+    return (*this);
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()

@@ -6,12 +6,13 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:18:13 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 14:18:37 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:22:50 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if !defined( Form_HPP)
+#ifndef Form_HPP
 #define Form_HPP
+
 #include "Bureaucrat.hpp"
 #include <iostream>
 
@@ -23,8 +24,8 @@ private:
     bool signedStatus;
     const int gradeToSign;
     const int gradeToExecute;
-public:
     Form();
+public:
     Form(const std::string &name, const int gradeToSign, const int gradeToExecute);
     Form(const  Form &ref);
     Form &operator=(const  Form &ref);
@@ -33,7 +34,8 @@ public:
     bool get_signedStatus() const;
     int get_gradeToSign() const;
     int get_gradeToExecute() const;
-    void beSigned(Bureaucrat *B);
+    void beSigned(const Bureaucrat& bureaucrat);
+    /* ---------------- Exception Classes ---------------- */
     class GradeTooHighException : public std::exception {
         public:
             virtual const char* what() const throw() {

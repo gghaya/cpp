@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:16:04 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 23:47:38 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:37:59 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &ref)
     *this = ref;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade):name(name), grade(grade)
 {
     try {
         if (grade < 1) {
@@ -41,7 +41,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
         else if (grade > 150) {
             throw GradeTooLowException();
         }
-        this->grade = grade;
     } 
     catch (const GradeTooHighException& e) {
         std::cout << e.what() << std::endl;
@@ -106,7 +105,6 @@ void Bureaucrat::decrement_grade()
     }
 }
 
-
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
 {
     o << bureaucrat.get_name();
@@ -116,7 +114,8 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
      return (o);
 }
 
-    void Bureaucrat::signForm(AForm &F)
+
+void Bureaucrat::signForm(AForm &F)
     {
         try {
         if (this->get_grade() <= F.get_gradeToSign())
@@ -129,7 +128,7 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
         }
     }
 
-    void Bureaucrat::executeForm(AForm const &form)
+void Bureaucrat::executeForm(AForm const &form)
 {
     try {
         if (this->grade > form.get_gradeToExecute()) {
@@ -138,6 +137,7 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
         std::cout<<this->get_name()<<" executed "<< form.get_name()<<std::endl;
     } 
     catch (const GradeTooLowException& e) {
+        std::cout << this->get_name() << " coulnd't execute " << form.get_name()<<std::endl;
         std::cout << e.what() << std::endl;
     }
 }

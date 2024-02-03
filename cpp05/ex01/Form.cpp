@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:52:22 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 14:21:31 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:52:26 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,6 @@ Form::Form(const std::string &name, const int gradeToSign, const int gradeToExec
 
 Form::Form(const Form &ref):gradeToExecute(ref.gradeToExecute), gradeToSign(ref.gradeToSign),name(ref.name)
 {
-    try{
-        if (this->gradeToExecute < 1 || gradeToSign < 1)
-            throw GradeTooHighException();
-        else if (this->gradeToExecute > 150 || gradeToSign > 150)
-            throw GradeTooLowException();
-        this->signedStatus = ref.signedStatus;
-    }
-    catch (const GradeTooHighException& e) {
-        std::cout << e.what() << std::endl;
-    } 
-    catch (const GradeTooLowException& e) {
-        std::cout << e.what() << std::endl;
-    }
     this->signedStatus =  ref.signedStatus;
 }
 
@@ -80,22 +67,17 @@ int Form::get_gradeToExecute() const
     return this->gradeToExecute;
 }
 
-void Form::beSigned(Bureaucrat *B)
+void Form::beSigned(const Bureaucrat& bureaucrat)
 {
     try
     {
-        if (B->get_grade() > this->gradeToSign)
+        if (bureaucrat.get_grade() > this->gradeToSign)
             throw GradeTooLowException();
-        // if (this->signedStatus != 1)
-        // {
-            this->signedStatus = 1;
-            // B->signForm(this);
-        // }
-        
+        this->signedStatus = 1;
     }
     catch(const GradeTooLowException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
 }
 

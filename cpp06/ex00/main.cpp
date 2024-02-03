@@ -6,19 +6,15 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/02 19:47:07 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/03 23:50:56 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "ScalarConverter.hpp"
 
 int main()
 {
-    Bureaucrat B = Bureaucrat("Ghizlane", 180);
-    std::cout<<B;
-    B.decrement_grade();
-    // std::cout<<B;
-    B.increment_grade();
-    std::cout<<B;
+    //  ScalarConverter converter;
+    ScalarConverter::convert("A");  // Example usage
     return(0);
 }

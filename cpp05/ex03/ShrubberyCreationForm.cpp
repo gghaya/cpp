@@ -30,6 +30,16 @@ void ShrubberyCreationForm::execute(const Bureaucrat &B)
     }
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &ref):AForm(ref), target(ref.target)
+{
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &ref)
+{
+    *this = ref;
+    return (*this);
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }

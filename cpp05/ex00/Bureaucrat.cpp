@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:16:04 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 23:33:19 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:43:04 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref)
     return (*this);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &ref)
+Bureaucrat::Bureaucrat(const Bureaucrat &ref):name(ref.name), grade(ref.grade)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = ref;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade):name(name), grade(grade)
 {
     try {
         if (grade < 1) {
@@ -41,7 +40,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
         else if (grade > 150) {
             throw GradeTooLowException();
         }
-        this->grade = grade;
     } 
     catch (const GradeTooHighException& e) {
         std::cout << e.what() << std::endl;
@@ -116,15 +114,3 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
      return (o);
 }
 
-void Bureaucrat::executeForm(AForm const &form)
-{
-    try {
-        if (grade > get_gradeToExecute()) {
-            throw GradeTooLowException();
-        }
-        std::cout<<this->get_name()<<" executed "<< form.get_name<<std::endl;
-    } 
-    catch (const GradeTooLowException& e) {
-        std::cout << e.what() << std::endl;
-    }
-}

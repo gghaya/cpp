@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:16:04 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/01 23:33:53 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:58:47 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &ref)
     *this = ref;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade):name(name), grade(grade)
 {
     try {
         if (grade < 1) {
@@ -41,7 +41,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
         else if (grade > 150) {
             throw GradeTooLowException();
         }
-        this->grade = grade;
     } 
     catch (const GradeTooHighException& e) {
         std::cout << e.what() << std::endl;
@@ -105,19 +104,20 @@ void Bureaucrat::decrement_grade()
         std::cout << e.what() << std::endl;
     }
 }
-    void Bureaucrat::signForm(AForm &F)
-    {
-        try {
-        if (this->get_grade() <= F.get_gradeToSign())
-            std::cout << *this << " signed " << form.get_name() << std::endl;
-        else
-            throw GradeTooLowException();
-        }
-        catch (Form::GradeTooLowException &e) {
-            std::cout << _name << " coulnd't sign " << form.getName() << " because " << e.what() << std::endl;
-        }
-    }
 
+void Bureaucrat::signForm(Form &F)
+ {
+    try {
+       if (this->get_grade() <= F.get_gradeToSign())
+        std::cout << this->get_name() << " signed " << F.get_name() << std::endl;
+    else
+        throw GradeTooLowException();
+    }
+    catch (GradeTooLowException &e) {
+        std::cout << F.get_name() << " coulnd't sign " << F.get_name() << " because " << e.what() << std::endl;
+    }
+}
+    
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
 {
     o << bureaucrat.get_name();
@@ -126,3 +126,4 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
     o << std::endl; 
      return (o);
 }
+
