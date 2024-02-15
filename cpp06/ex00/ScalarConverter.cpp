@@ -6,13 +6,14 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:03:15 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/03 23:55:42 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/08 11:22:49 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 ScalarConverter::ScalarConverter()
 {
@@ -76,8 +77,8 @@ bool is_int(std::string param)
             return (false);
         index++;
     }
-    if ((sign * result) > 2147483647 || (sign * result) < -2147483648)
-		return (false);
+    // if ((sign * result) > 2147483647 || (sign * result) < -2147483648)
+	// 	return (false);
     return true;
 }
 
@@ -126,15 +127,9 @@ bool not_type(std::string param)
     {
         std::cout << "char: " << "impossible" << std::endl;
         std::cout << "int: " << "impossible" << std::endl;
-        if(param == "nan")
-            std::cout << "float: " << "nanf" << std::endl;
-        else
-            std::cout << "float: " << param.substr(0, param.length() - 1) << "f" << std::endl;
+        std::cout << "float: " << param << "f" << std::endl;
+         std::cout << "double: " << param << std::endl;
     }
-    else
-        std::cout << "float: " << param << std::endl;
-    std::cout << "double: " << param << std::endl;
-    exit(0);
     return(false);
 }
 
@@ -154,7 +149,7 @@ void cast_char(std::string param)
     n = static_cast<int>(c);
     std::cout << "int : " << n << std::endl;
     f = static_cast<float>(c);
-    std::cout << "float : " << f <<".0f"<< std::endl;
+    std::cout << "float : " << f <<".f"<< std::endl;
     d = static_cast<double>(c);
     std::cout << "double : " << d <<".0"<< std::endl;
 }
@@ -167,33 +162,81 @@ void cast_int(std::string param)
     double d;
     
     n = static_cast<int>(ft_atoi(param));
+    c = static_cast<char>(c);
+    if(c < 32 || c == 127)
+        std::cout << "char : " << "Non displayable" << std::endl;
+    else
+        std::cout << "char : " << c << std::endl;
     if (n > 2147483647 || n < -2147483648)
         std::cout << "int : " << "Impossible" << std::endl;
     else
         std::cout << "int : " << n << std::endl;
-    c = static_cast<char>(c);
-    std::cout << "int : " << n << std::endl;
     f = static_cast<float>(c);
     std::cout << "float : " << f <<".0f"<< std::endl;
     d = static_cast<double>(c);
     std::cout << "double : " << d <<".0"<< std::endl;
 }
 
+void cast_float(std::string param)
+{
+    double f;
+    size_t decimalPos = param.find('.');
+    size_t numDecimalPlaces = param.length() - decimalPos;
+    f = std::stod(param);
+    std::cout.precision(numDecimalPlaces); 
+    char c = static_cast<char>(f);
+    if(c < 32 || c > 126)
+        std::cout << "char: " << "Non displayable" << std::endl;
+    else
+        std::cout << "char: '" << c << "'" << std::endl;
+    if (f > MAXFLOAT || f < INT_MIN)
+        std::cout << "float: " << "impossible" << std::endl;
+    else
+        std::cout << "float: "<< std::fixed << std::setprecision(numDecimalPlaces) << "f"<< std::endl;
+    if (f > INT_MAX || f < INT_MIN)
+        std::cout << "int: " << "impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(f) << std::endl;
+    std::cout << "double: "  << static_cast<double>(f) << std::endl;
 
+}
+
+void cast_double(std::string param)
+{
+    double f;
+    size_t decimalPos = param.find('.');
+    size_t numDecimalPlaces = param.length() - decimalPos;
+    f = std::stod(param);
+    std::cout.precision(numDecimalPlaces); 
+
+    char c = static_cast<char>(f);
+    if(c < 32 || c > 126)
+        std::cout << "char: " << "Non displayable" << std::endl;
+    else
+        std::cout << "char: '" << c << "'" << std::endl;
+    std::cout << "double: "  << static_cast<double>(f) << std::endl;
+    if (f > MAXFLOAT || f < INT_MIN)
+        std::cout << "float: " << "impossible" << std::endl;
+    else
+        std::cout << "float: "  << std::fixed << std::setprecision(numDecimalPlaces)<< "f" << std::endl;
+    if (f > INT_MAX || f < INT_MIN)
+        std::cout << "int: " << "impossible" << std::endl;
+    else
+        std::cout << "int: " << std::fixed << std::setprecision(numDecimalPlaces) << std::endl;
+}
 void ScalarConverter::convert(std::string param)
 {
     try
     {
+        not_type(param);
         if (is_char(param))
             cast_char(param);
         else if (is_int(param))
-            std::cout<<"its int";
+           cast_int(param);
         else if (is_float(param))
-            std::cout<<"its float";
+            cast_float(param);
         else if (is_double(param))
-            std::cout<<"its double";
-        else
-            std::cout<<"Impossible !!!" ;
+            cast_double(param);
             
     }
     catch(const std::exception& e)

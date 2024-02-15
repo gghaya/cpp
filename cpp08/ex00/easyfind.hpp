@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   easyfind.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef easyfind_HPP
+#define easyfind_HPP
 #include <iostream>
-#include <stdexcept>
+#include <algorithm>
 
-class  ScalarConverter
+  class ElementNotFound : public std::exception {
+        public:
+            virtual const char* what() const throw() { return "Error : Element not found";}
+    };
+
+template<typename T>
+typename T::iterator easyfind(T &Container, int element)
 {
-private:
-    /* data */
-    ScalarConverter(/* args */);
-public:
-    ~ ScalarConverter();
-    ScalarConverter(const  ScalarConverter &ref);
-    ScalarConverter &operator=(const  ScalarConverter &ref);
-    static void convert(std::string param);
-};
+    typename T::iterator it = std::find(Container.begin(), Container.end(), element);
+    try{
+        if (it != Container.end()) {
+            std::cout << "Element found at index: " << std::distance(Container.begin(), it)<< std::endl;
+        } else {
+            throw ElementNotFound();
+        }
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    return (it);
+}
 
 
 #endif

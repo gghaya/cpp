@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 11:01:07 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/08 10:18:03 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/06 12:58:49 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/06 13:33:39 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
-#include <iostream>
-#include <stdexcept>
-
-class  ScalarConverter
+#include "Serializer.hpp"
+int main()
 {
-private:
-    /* data */
-    ScalarConverter(/* args */);
-public:
-    ~ ScalarConverter();
-    ScalarConverter(const  ScalarConverter &ref);
-    ScalarConverter &operator=(const  ScalarConverter &ref);
-    static void convert(std::string param);
-};
+    Data *node;
+    Data *n1;
 
-
-#endif
+    node->data = "serialized data";
+    node->next= nullptr;
+    uintptr_t output = Serializer::serialize(node);
+    n1 = Serializer::deserialize(output);
+    std::cout<<n1->data<<std::endl;
+    return(0);
+}

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 11:01:07 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/08 10:18:03 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/07 12:07:28 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/07 13:05:05 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
-#include <iostream>
-#include <stdexcept>
+#ifndef HEADER_HPP
+#define HEADER_HPP
 
-class  ScalarConverter
+#include <iostream>
+template<typename T>
+
+void printElement(T &x) {
+    std::cout << x << " ";
+}
+
+template<typename T>
+
+void iter(T *array, int len, void(*fct)(T&))
 {
-private:
-    /* data */
-    ScalarConverter(/* args */);
-public:
-    ~ ScalarConverter();
-    ScalarConverter(const  ScalarConverter &ref);
-    ScalarConverter &operator=(const  ScalarConverter &ref);
-    static void convert(std::string param);
-};
+    int i = 0;
+    while (i < len)
+    {
+        fct(array[i]);
+        i++;
+    }
+}
 
 
 #endif

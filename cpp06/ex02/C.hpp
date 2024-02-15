@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 11:01:07 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/08 10:18:03 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/06 14:02:59 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/06 14:19:30 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
-#include <iostream>
-#include <stdexcept>
+#ifndef C_HPP
+#define C_HPP
+#include<iostream>
+#include "Base.hpp"
 
-class  ScalarConverter
+class Base;
+class C : public Base
 {
-private:
-    /* data */
-    ScalarConverter(/* args */);
+private:    
+
 public:
-    ~ ScalarConverter();
-    ScalarConverter(const  ScalarConverter &ref);
-    ScalarConverter &operator=(const  ScalarConverter &ref);
-    static void convert(std::string param);
+    C();
+    virtual ~C();
 };
 
 

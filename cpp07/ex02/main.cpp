@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 11:01:07 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/08 10:18:03 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/07 11:54:37 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/08 14:55:17 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
 #include <iostream>
-#include <stdexcept>
+#include "Array.hpp"
 
-class  ScalarConverter
-{
-private:
-    /* data */
-    ScalarConverter(/* args */);
-public:
-    ~ ScalarConverter();
-    ScalarConverter(const  ScalarConverter &ref);
-    ScalarConverter &operator=(const  ScalarConverter &ref);
-    static void convert(std::string param);
-};
+int main() {
+    // Test default constructor
+    // Array<int> arr1[2];
+    // std::cout << "Size of arr1: " << arr1.size() << std::endl;
 
+    // Test parameterized constructor
+    Array<int> arr2(5);
+    std::cout << "Size of arr2: " << arr2.size() << std::endl;
+    arr2[0] = 12;
+    arr2[1] = 13;
+    std::cout << " arr2[0] " << arr2[1] << std::endl;
 
-#endif
+    return 0;
+}

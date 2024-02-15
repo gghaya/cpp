@@ -66,6 +66,9 @@
         "utility": "cpp",
         "vector": "cpp",
         "filesystem": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "list": "cpp"
     }
 }
