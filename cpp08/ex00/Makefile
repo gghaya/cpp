@@ -6,7 +6,7 @@
 #    By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 23:38:53 by gghaya            #+#    #+#              #
-#    Updated: 2024/02/14 23:18:24 by gghaya           ###   ########.fr        #
+#    Updated: 2024/02/15 16:55:07 by gghaya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ NAME = easyfind
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)   easyfind.hpp
+$(NAME) : $(OBJ) easyfind.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 	@echo "done"
 
-%.o: %.cpp
+%.o: %.cpp easyfind.hpp
 	$(CC) $(FLAG) -c $< -o $@
 
 clean :
