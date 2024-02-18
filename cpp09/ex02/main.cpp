@@ -6,59 +6,31 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:58:49 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/15 16:57:20 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/18 02:51:57 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "MutantStack.hpp"
+#include "PmergeMe.hpp"
 
-int main ()
+int main (int ac, char **av)
 {
-    MutantStack<int> mstack;
-    mstack.push(5);
-    mstack.push(17);
-    std::cout << "top: " << mstack.top() << std::endl;
-    std::cout << "size Befor: " << mstack.size() << std::endl;
-    mstack.pop();
-    std::cout << "size after: " << mstack.size() << std::endl;
-    mstack.push(3);
-    mstack.push(5);
-    mstack.push(737);
-    mstack.push(0);
+    PmergeMe P = PmergeMe();
+    P.fill_containers(av, ac);
+    
+    clock_t Dstart = clock();
+    P.find_Dpairs();
+    clock_t Dend = clock();
+    
+    clock_t Vstart = clock();
+    P.find_Vpairs();
+    clock_t Vend = clock();
+    P.unsorted_containers();
+    P.sorted_containers();
+    double Dduration = ((Dend - Dstart) / (double)CLOCKS_PER_SEC)*60;
+    std::cout << "Time to process a range of  : "  << Dduration << " micro seconds" << std::endl;
+    double Vduration = ((Vend - Vstart) / (double)CLOCKS_PER_SEC)*60;
+    std::cout << "Time to process a range of : "  << Vduration << " micro seconds" << std::endl;
 
-    MutantStack<int>::iterator it = mstack.begin();
-    MutantStack<int>::iterator ite = mstack.end();
-    ++it;
-    --it;
-    std::cout << "stack: ";
-    while (it != ite)
-    {
-        std::cout << *it << " ";
-        ++it;
-    }
-    std::cout << std::endl;
-    std::stack<int> s(mstack);
-    std::cout << "top: " << s.top() << std::endl;
     return 0;
 }
-
-// int main() {
-//     // Create a MutantStack of integers
-//     MutantStack<int> myStack;
-
-//     // Push some elements onto the stack
-//     myStack.push(1);
-//     myStack.push(2);
-//     myStack.push(3);
-//     myStack.push(4);
-
-//     // Use iterators to print elements in the stack
-//     std::cout << "Elements in MutantStack: ";
-//     for (MutantStack<int>::iterator it = myStack.begin(); it != myStack.end(); ++it) {
-//         std::cout << *it << " ";
-//     }
-//     std::cout << std::endl;
-
-//     return 0;
-// }

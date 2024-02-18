@@ -6,12 +6,12 @@
 #    By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 23:38:53 by gghaya            #+#    #+#              #
-#    Updated: 2024/02/15 16:57:36 by gghaya           ###   ########.fr        #
+#    Updated: 2024/02/17 20:24:01 by gghaya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRC =  main.cpp
+SRC =  main.cpp PmergeMe.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -20,15 +20,15 @@ CC = c++
 
 FLAG = -Wall -Wextra -Werror -std=c++98
 
-NAME = MutantStack
+NAME = PmergeMe
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) MutantStack.hpp
+$(NAME) : $(OBJ) PmergeMe.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 	@echo "done"
 
-%.o: %.cpp MutantStack.hpp
+%.o: %.cpp PmergeMe.hpp
 	$(CC) $(FLAG) -c $< -o $@
 
 clean :

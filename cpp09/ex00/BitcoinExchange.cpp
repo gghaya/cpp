@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:00:45 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/17 02:51:54 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:24:13 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,11 @@ int valide_m2(std::string year, std::string day)
 }
 int valide_days(std::string year, std::string  month, std::string day)
 {
+        if(((std::atof(year.c_str()) < 2000) || (std::atof(year.c_str())) > 2023))
+        {
+            std::cout << "Error: bad input1" << std::endl;
+            return (0);
+        }
         if ( ((std::atof(month.c_str()) < 0) || (std::atof(month.c_str())) > 12))
         {
             std::cout << "Error: bad input1" << std::endl;

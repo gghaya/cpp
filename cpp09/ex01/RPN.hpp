@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/17 13:49:54 by gghaya           ###   ########.fr       */
+/*   Created: 2024/02/17 14:35:39 by gghaya            #+#    #+#             */
+/*   Updated: 2024/02/17 17:10:34 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#ifndef RPN_HPP
+#define RPN_HPP
+#include<string>
+#include<iostream>
+#include <stack>
 
-int main(int ac , char *av[]) {
-    if (ac == 2)
-    {
-        BitcoinExchange B = BitcoinExchange();
-        B.read_csv("data.csv");
-        B.read_input(av[1]);
-    }
-    else if (ac == 1)
-        std::cout<< "Error: could not open file."<<std::endl;
-    return(0);
-}
+int operation(int i);
+int valide_parse(std::string str);
+int RPN (std::string str);
+#endif
