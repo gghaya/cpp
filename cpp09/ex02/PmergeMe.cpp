@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 19:48:03 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/18 02:52:48 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/18 23:23:16 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void PmergeMe::find_Dpairs()
     }
 }
 
-void PmergeMe::sorted_containers()
+void PmergeMe::sorted_deque()
 {
     std::cout << "After  :";
     for (std::deque<int>::iterator it = mainDeque.begin(); it != mainDeque.end(); it++) {
@@ -141,12 +141,32 @@ void PmergeMe::sorted_containers()
     }
     std::cout << std::endl;
 }
-void PmergeMe::unsorted_containers()
+void PmergeMe::sorted_vector()
+{
+    std::cout << "After  :";
+    for (std::vector<int>::iterator it = mainV.begin(); it != mainV.end(); it++) {
+        std::cout << " " << *it  << " " ;
+    }
+    std::cout << std::endl;
+}
+void PmergeMe::unsorted_vector()
 {
     std::cout << "Before :";
     for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); it++) {
         std::cout << " " << *it  << " " ;
     }
+    if (struggler != -1)
+        std::cout << " " << struggler  << " " ;
+    std::cout << std::endl;
+}
+void PmergeMe::unsorted_deque()
+{
+    std::cout << "Before :";
+    for (std::deque<int>::iterator it = myDeque.begin(); it != myDeque.end(); it++) {
+        std::cout << " " << *it  << " " ;
+    }
+    if (struggler != -1)
+        std::cout << " " << struggler  << " " ;
     std::cout << std::endl;
 }
 PmergeMe::PmergeMe(/* args */)
@@ -195,7 +215,11 @@ void PmergeMe::fill_containers(char **str, int len)
         }
     }
     else
+    {
         std::cout<<"Error"<<std::endl;
+        exit(1);
+    }
+    size = myVector.size();
 }
 PmergeMe::~PmergeMe()
 {

@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:58:49 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/18 02:51:57 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/18 23:29:43 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,20 @@ int main (int ac, char **av)
     clock_t Vstart = clock();
     P.find_Vpairs();
     clock_t Vend = clock();
-    P.unsorted_containers();
-    P.sorted_containers();
-    double Dduration = ((Dend - Dstart) / (double)CLOCKS_PER_SEC)*60;
-    std::cout << "Time to process a range of  : "  << Dduration << " micro seconds" << std::endl;
-    double Vduration = ((Vend - Vstart) / (double)CLOCKS_PER_SEC)*60;
-    std::cout << "Time to process a range of : "  << Vduration << " micro seconds" << std::endl;
+
+    
+    std::cout << "****************** Vector ******************" << std::endl;
+    P.unsorted_vector();
+    P.sorted_vector();
+    float Vduration = ((Vend - Vstart) / (float)CLOCKS_PER_SEC)*1000;
+    std::cout << "Time to process a range of "  << P.size << " elements with std::Vector : "<< Vduration << " micro seconds" << std::endl;
+
+    
+    std::cout << "****************** Deque ******************" << std::endl;
+    P.unsorted_deque();
+    P.sorted_deque();
+    float Dduration = ((Dend - Dstart) / (float)CLOCKS_PER_SEC)*1000;
+    std::cout << "Time to process a range of "  << P.size << " elements with std::Deque : "<<  Dduration << " micro seconds" << std::endl;
 
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 22:29:42 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/17 16:57:14 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/18 22:22:28 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 int main(int ac, char *av[]) {
     if (ac == 2)
         std::cout<< RPN(av[1])<< std::endl;
+    else
+        std::cout<< "Error"<< std::endl;
     return 0;
 }

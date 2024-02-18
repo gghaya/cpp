@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 19:49:39 by gghaya            #+#    #+#             */
-/*   Updated: 2024/02/18 02:50:22 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/02/18 23:22:26 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ private:
     std::deque<std::pair<int, int> > myDOfPairs;
     std::deque<int> mainDeque;
 public:
+    size_t size;
     PmergeMe(/* args */);
     int valide_args(char **str);
     void find_Vpairs();
     void find_Dpairs();
     void fill_containers(char **str, int len);
-    void sorted_containers();
-    void unsorted_containers();
+    void sorted_vector();
+    void unsorted_vector();
+    void sorted_deque();
+    void unsorted_deque();
     ~PmergeMe();
 };
 
