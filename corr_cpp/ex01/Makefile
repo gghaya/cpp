@@ -6,12 +6,12 @@
 #    By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 23:38:53 by gghaya            #+#    #+#              #
-#    Updated: 2024/02/19 03:49:30 by gghaya           ###   ########.fr        #
+#    Updated: 2024/02/17 14:35:57 by gghaya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRC =  main.cpp PmergeMe.cpp
+SRC =  main.cpp  RPN.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -20,15 +20,15 @@ CC = c++
 
 FLAG = -Wall -Wextra -Werror -std=c++98
 
-NAME = PmergeMe
+NAME =  RPN
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) PmergeMe.hpp
+$(NAME) : $(OBJ)  RPN.hpp
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 	@echo "done"
 
-%.o: %.cpp PmergeMe.hpp
+%.o: %.cpp  RPN.hpp
 	$(CC) $(FLAG) -c $< -o $@
 
 clean :
